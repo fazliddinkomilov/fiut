@@ -1,0 +1,50 @@
+{% extends 'main_app/base.html' %}
+{% load static %}
+{% block page_title %}{{page_title}}{% endblock page_title %}
+{% load static %}
+{% block content %}
+
+<section class="content">
+
+    <div class="container-fluid">
+    <a href="/news/add" target="_parent"><button type="button" class="btn btn-dark btn-block" style="background-color: #683cb8; opacity: 70%">Add</button></a>
+    <hr>
+    <div class="row">
+
+
+
+        {% for n in news %}
+
+            <tr>
+
+                <div class="card card-light card-secondary">
+
+                    <div class="card-header">
+                                        <h3 class="card-title" ><b>{{n.title}}</b></h3>
+                    <img  class="img img-bordered img-rounded mb-lg-4" src="{{ n.image.url  }}"   align="right" width="450"/> </a>
+
+                        <hr>
+                    {{ n.description }}
+    <hr>
+                        {% if n.registrationlink != Null %}
+                        <a href="{{ n.registrationlink }}" target="_parent"><button type="button" class="btn btn-dark">Registration</button></a>
+
+                                             <a href="{% url 'delete_news' n.id %}" style="opacity: 80%" onclick="return confirm('Are you sure you want to delete this ?')" target="_parent"><button type="button" class="btn btn-danger">Delete</button></a>
+
+                        {% endif%}
+
+                        {% if n.registrationlink == Null %}
+                             <a href="{% url 'delete_news' n.id %}" onclick="return confirm('Are you sure you want to delete this ?')" target="_parent"><button type="button" class="btn btn-danger" style="opacity: 80%">Delete</button></a>
+                        {% endif%}
+
+                    </div>
+ </div>
+           </tr>
+        {% endfor %}
+</div>
+
+
+
+    </div>
+</section>
+{% endblock content %}

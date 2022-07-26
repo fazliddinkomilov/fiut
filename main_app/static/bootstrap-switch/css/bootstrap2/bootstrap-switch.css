@@ -254,15 +254,15 @@
 .bootstrap-switch .bootstrap-switch-handle-off.bootstrap-switch-danger {
   color: #fff;
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
-  background-color: #d14641;
-  background-image: -moz-linear-gradient(top, #bd362f, #ee5f5b);
-  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#bd362f), to(#ee5f5b));
-  background-image: -webkit-linear-gradient(top, #bd362f, #ee5f5b);
-  background-image: -o-linear-gradient(top, #bd362f, #ee5f5b);
-  background-image: linear-gradient(to bottom, #bd362f, #ee5f5b);
+  background-color: #8064A2;
+  background-image: -moz-linear-gradient(top, #8064A2, #ee5f5b);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#8064A2), to(#ee5f5b));
+  background-image: -webkit-linear-gradient(top, #8064A2, #ee5f5b);
+  background-image: -o-linear-gradient(top, #8064A2, #ee5f5b);
+  background-image: linear-gradient(to bottom, #8064A2, #ee5f5b);
   background-repeat: repeat-x;
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffbd362f', endColorstr='#ffee5f5b', GradientType=0);
-  border-color: #ee5f5b #ee5f5b #e51d18;
+  border-color: #ee5f5b #ee5f5b #8064A2;
   border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
   *background-color: #ee5f5b;
   /* Darken IE7 buttons by default so they stand out more given they won't have borders */

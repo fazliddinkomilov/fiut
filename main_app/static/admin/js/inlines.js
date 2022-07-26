@@ -1,20 +1,5 @@
 /*global DateTimeShortcuts, SelectFilter*/
-/**
- * Django admin inlines
- *
- * Based on jQuery Formset 1.1
- * @author Stanislaus Madueke (stan DOT madueke AT gmail DOT com)
- * @requires jQuery 1.2.6 or later
- *
- * Copyright (c) 2009, Stanislaus Madueke
- * All rights reserved.
- *
- * Spiced up with Code from Zain Memon's GSoC project 2009
- * and modified for Django by Jannis Leidel, Travis Swicegood and Julien Phalip.
- *
- * Licensed under the New BSD License
- * See: https://opensource.org/licenses/bsd-license.php
- */
+
 'use strict';
 {
     const $ = django.jQuery;

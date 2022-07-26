@@ -8,7 +8,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-12">
-                <div class="card">
+                <div class="card card-purple" style="opacity: 80%">
                     <div class="card-header">
                         <h3 class="card-title">{{page_title}}</h3>
                     </div>
@@ -42,7 +42,7 @@
                                             src="{{student.profile_pic}}" alt="">
                                         {% endif %}
                                     </td>
-                                    <td><button data-toggle = "modal" data-target = "#myModal"class="btn btn-primary show_notification" value="{{student.id}}">Send Notification</button> 
+                                    <td><button data-toggle = "modal" data-target = "#myModal"class="btn btn-dark show_notification" value="{{student.id}}" style="background-color: #683cb8; opacity: 70%">Send Notification</button>
                                     </td>
                                 </tr>
                                 {% endfor %}

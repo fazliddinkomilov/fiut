@@ -1,11 +1,25 @@
 {% load static %}
+{% load static i18n %}
 <!DOCTYPE html>
+<style>
+    .content {
+  position: fixed;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  color: #f1f1f1;
+  background-position: right;
+        min-width: 100%;
+        opacity: 10%;
+        object-fit: cover
+
+}
+</style>
 <html>
 
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>AdminLTE 3 | Log in</title>
+    <title>Inha | Log in</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Font Awesome -->
@@ -20,12 +34,19 @@
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
     <!-- Google Recaptcha     -->
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
+    <video autoplay muted loop id="myVideo" class="content">
+  <source src="{% static 'bgvideo.mp4' %}" type="video/mp4">
+</video>
+
 </head>
 
 <body class="hold-transition login-page">
+<img src="{% static 'iut-logo.png' %}" width="140" style="opacity: 80%" >
     <div class="login-box">
+
         <div class="login-logo">
-            <a href="../../index2.html"><b>Admin</b>LTE</a>
+            <a href="../../index2.html"><b>FTUT - LOG IN</b></a>
 
         </div>
         <!-- /.login-logo -->
@@ -76,7 +97,7 @@
                         </div>
                         <!-- /.col -->
                         <div class="col-4">
-                            <button type="submit" class="btn btn-primary btn-block">Sign In</button>
+                            <button type="submit"class="btn btn-dark btn-block" style="background-color: #993cb8; opacity: 70%">Sign In</button>
                         </div>
 
 

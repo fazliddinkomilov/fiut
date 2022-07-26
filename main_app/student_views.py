@@ -12,6 +12,46 @@ from django.views.decorators.csrf import csrf_exempt
 
 from .forms import *
 from .models import *
+from django.utils.translation import gettext as _
+
+def student_news(request):
+    news = News.objects.all().order_by('-id')
+    student = get_object_or_404(Student, admin=request.user)
+    total_subject = Subject.objects.filter(course=student.course).count()
+    total_attendance = AttendanceReport.objects.filter(student=student).count()
+    total_present = AttendanceReport.objects.filter(student=student, status=True).count()
+    if total_attendance == 0:  # Don't divide. DivisionByZero
+        percent_absent = percent_present = 0
+    else:
+        percent_present = math.floor((total_present/total_attendance) * 100)
+        percent_absent = math.ceil(100 - percent_present)
+    subject_name = []
+    data_present = []
+    data_absent = []
+    subjects = Subject.objects.filter(course=student.course)
+    for subject in subjects:
+        attendance = Attendance.objects.filter(subject=subject)
+        present_count = AttendanceReport.objects.filter(
+            attendance__in=attendance, status=True, student=student).count()
+        absent_count = AttendanceReport.objects.filter(
+            attendance__in=attendance, status=False, student=student).count()
+        subject_name.append(subject.name)
+        data_present.append(present_count)
+        data_absent.append(absent_count)
+    context = {
+        'total_attendance': total_attendance,
+        'percent_present': percent_present,
+        'percent_absent': percent_absent,
+        'total_subject': total_subject,
+        'subjects': subjects,
+        'data_present': data_present,
+        'data_absent': data_absent,
+        'data_name': subject_name,
+        'news':news,
+        'page_title': _('Student Homepage')
+
+    }
+    return render(request, 'student_template/student_news.html', context)
 
 
 def student_home(request):
@@ -46,7 +86,7 @@ def student_home(request):
         'data_present': data_present,
         'data_absent': data_absent,
         'data_name': subject_name,
-        'page_title': 'Student Homepage'
+        'page_title': _('Student Homepage')
 
     }
     return render(request, 'student_template/home_content.html', context)
@@ -59,7 +99,7 @@ def student_view_attendance(request):
         course = get_object_or_404(Course, id=student.course.id)
         context = {
             'subjects': Subject.objects.filter(course=course),
-            'page_title': 'View Attendance'
+            'page_title': _('View Attendance')
         }
         return render(request, 'student_template/student_view_attendance.html', context)
     else:
@@ -92,7 +132,7 @@ def student_apply_leave(request):
     context = {
         'form': form,
         'leave_history': LeaveReportStudent.objects.filter(student=student),
-        'page_title': 'Apply for leave'
+        'page_title': _('Apply for leave')
     }
     if request.method == 'POST':
         if form.is_valid():
@@ -101,12 +141,12 @@ def student_apply_leave(request):
                 obj.student = student
                 obj.save()
                 messages.success(
-                    request, "Application for leave has been submitted for review")
+                    request, _("Application for leave has been submitted for review"))
                 return redirect(reverse('student_apply_leave'))
             except Exception:
-                messages.error(request, "Could not submit")
+                messages.error(request, _("Could not submit"))
         else:
-            messages.error(request, "Form has errors!")
+            messages.error(request, _("Form has errors!"))
     return render(request, "student_template/student_apply_leave.html", context)
 
 
@@ -116,7 +156,7 @@ def student_feedback(request):
     context = {
         'form': form,
         'feedbacks': FeedbackStudent.objects.filter(student=student),
-        'page_title': 'Student Feedback'
+        'page_title': _('Student Feedback')
 
     }
     if request.method == 'POST':
@@ -126,12 +166,12 @@ def student_feedback(request):
                 obj.student = student
                 obj.save()
                 messages.success(
-                    request, "Feedback submitted for review")
+                    request, _("Feedback submitted for review"))
                 return redirect(reverse('student_feedback'))
             except Exception:
-                messages.error(request, "Could not Submit!")
+                messages.error(request, _("Could not Submit!"))
         else:
-            messages.error(request, "Form has errors!")
+            messages.error(request, _("Form has errors!"))
     return render(request, "student_template/student_feedback.html", context)
 
 
@@ -140,7 +180,7 @@ def student_view_profile(request):
     form = StudentEditForm(request.POST or None, request.FILES or None,
                            instance=student)
     context = {'form': form,
-               'page_title': 'View/Edit Profile'
+               'page_title': _('View/Edit Profile')
                }
     if request.method == 'POST':
         try:
@@ -165,12 +205,12 @@ def student_view_profile(request):
                 admin.gender = gender
                 admin.save()
                 student.save()
-                messages.success(request, "Profile Updated!")
+                messages.success(request, _("Profile Updated!"))
                 return redirect(reverse('student_view_profile'))
             else:
-                messages.error(request, "Invalid Data Provided")
+                messages.error(request, _("Invalid Data Provided"))
         except Exception as e:
-            messages.error(request, "Error Occured While Updating Profile " + str(e))
+            messages.error(request, _("Error Occured While Updating Profile ") + str(e))
 
     return render(request, "student_template/student_view_profile.html", context)
 
@@ -192,7 +232,7 @@ def student_view_notification(request):
     notifications = NotificationStudent.objects.filter(student=student)
     context = {
         'notifications': notifications,
-        'page_title': "View Notifications"
+        'page_title': _("View Notifications")
     }
     return render(request, "student_template/student_view_notification.html", context)
 
@@ -202,6 +242,6 @@ def student_view_result(request):
     results = StudentResult.objects.filter(student=student)
     context = {
         'results': results,
-        'page_title': "View Results"
+        'page_title': _("View Results")
     }
     return render(request, "student_template/student_view_result.html", context)

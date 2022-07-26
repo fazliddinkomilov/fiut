@@ -1,10 +1,3 @@
-/*!
- * Flash export buttons for Buttons and DataTables.
- * 2015-2017 SpryMedia Ltd - datatables.net/license
- *
- * ZeroClipbaord - MIT license
- * Copyright (c) 2012 Joseph Huckaby
- */
 
 (function( factory ){
 	if ( typeof define === 'function' && define.amd ) {
@@ -44,13 +37,7 @@ var DataTable = $.fn.dataTable;
  * ZeroClipboard dependency
  */
 
-/*
- * ZeroClipboard 1.0.4 with modifications
- * Author: Joseph Huckaby
- * License: MIT
- *
- * Copyright (c) 2012 Joseph Huckaby
- */
+
 var ZeroClipboard_TableTools = {
 	version: "1.0.4-TableTools2",
 	clients: {}, // registered upload clients on page, indexed by id

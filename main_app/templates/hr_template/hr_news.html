@@ -1,0 +1,42 @@
+{% extends 'main_app/base.html' %}
+{% load static %}
+{% block page_title %}{{page_title}}{% endblock page_title %}
+{% load static %}
+{% block content %}
+
+<section class="content">
+    <div class="container-fluid">
+    <div class="row">
+
+        {% for n in news %}
+
+            <tr>
+
+                <div class="card card-light card-secondary">
+
+                    <div class="card-header">
+                                        <h3 class="card-title" ><b>{{n.title}}</b></h3>
+                    <img  class="img img-bordered img-rounded mb-lg-4" src="{{ n.image.url  }}"   align="right" width="450"/> </a>
+
+                        <hr>
+                    {{ n.description }}
+    <hr>
+                        {% if n.registrationlink != Null %}
+                        <a href="{{ n.registrationlink }}" target="_parent"><button type="button" class="btn btn-dark">Registration</button></a>
+
+
+                        {% endif%}
+
+
+
+                    </div>
+ </div>
+           </tr>
+        {% endfor %}
+</div>
+
+
+
+    </div>
+</section>
+{% endblock content %}

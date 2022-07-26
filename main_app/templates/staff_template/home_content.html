@@ -4,75 +4,12 @@
 {% block content %}
 <section class="content">
     <div class="container-fluid">
-        <!-- Small boxes (Stat box) -->
-        <div class="row">
-            <div class="col-lg-3 col-6">
-                <!-- small box -->
-                <div class="small-box bg-info">
-                    <div class="inner">
-                        <h3>{{total_students}}</h3>
 
-                        <p>Total Students</p>
-                    </div>
-                    <div class="icon">
-                        <i class="ion ion-bag"></i>
-                    </div>
-                   
-                </div>
-            </div>
-            <!-- ./col -->
-            <div class="col-lg-3 col-6">
-                <!-- small box -->
-                <div class="small-box bg-success">
-                    <div class="inner">
-                        <h3>{{total_attendance}}</h3>
-
-                        <p>Total Attendance Taken</p>
-                    </div>
-                    <div class="icon">
-                        <i class="ion ion-stats-bars"></i>
-                    </div>
-                   
-                </div>
-            </div>
-            <!-- ./col -->
-            <div class="col-lg-3 col-6">
-                <!-- small box -->
-                <div class="small-box bg-warning">
-                    <div class="inner">
-                        <h3>{{total_leave}}</h3>
-
-                        <p>Total Leave Applied</p>
-                    </div>
-                    <div class="icon">
-                        <i class="ion ion-person-add"></i>
-                    </div>
-                   
-                </div>
-            </div>
-            <!-- ./col -->
-            <div class="col-lg-3 col-6">
-                <!-- small box -->
-                <div class="small-box bg-danger">
-                    <div class="inner">
-                        <h3>{{total_subject}}</h3>
-
-                        <p>Total Subjects</p>
-                    </div>
-                    <div class="icon">
-                        <i class="ion ion-pie-graph"></i>
-                    </div>
-                   
-                </div>
-            </div>
-            <!-- ./col -->
-        </div>
-        <!-- /.row -->
         <!-- Main row -->
         <div class="row">
             <div class="col-md-6">
                 <!-- LINE CHART -->
-                <div class="card card-secondary">
+                <div class="card card-red card-secondary">
                   <div class="card-header">
                     <h3 class="card-title">{{page_title}}</h3>
     
@@ -90,7 +27,7 @@
                   <!-- /.card-body -->
                 </div>
                 <div class="col-md-6">
-                    <div class="card card-secondary">
+                    <div class="card card-red card-secondary">
               <div class="card-header">
                 <h3 class="card-title">{{page_title}}</h3>
 
@@ -111,6 +48,74 @@
             <!-- right col -->
         </div>
         <!-- /.row (main row) -->
+
+
+                <!-- Small boxes (Stat box) -->
+        <div class="row">
+            <div class="col-lg-3 col-6">
+                <!-- small box -->
+                <div class="small-box bg-red">
+                    <div class="inner">
+                        <h3>{{total_students}}</h3>
+
+                        <p>Total Students</p>
+                    </div>
+                    <div class="icon">
+                        <i class="ion ion-bag"></i>
+                    </div>
+
+                </div>
+            </div>
+            <!-- ./col -->
+            <div class="col-lg-3 col-6">
+                <!-- small box -->
+                <div class="small-box bg-red">
+                    <div class="inner">
+                        <h3>{{total_attendance}}</h3>
+
+                        <p>Total Attendance Taken</p>
+                    </div>
+                    <div class="icon">
+                        <i class="ion ion-stats-bars"></i>
+                    </div>
+
+                </div>
+            </div>
+            <!-- ./col -->
+            <div class="col-lg-3 col-6">
+                <!-- small box -->
+                <div class="small-box bg-red">
+                    <div class="inner">
+                        <h3>{{total_leave}}</h3>
+
+                        <p>Total Leave Applied</p>
+                    </div>
+                    <div class="icon">
+                        <i class="ion ion-person-add"></i>
+                    </div>
+
+                </div>
+            </div>
+            <!-- ./col -->
+            <div class="col-lg-3 col-6">
+                <!-- small box -->
+                <div class="small-box bg-red">
+                    <div class="inner">
+                        <h3>{{total_subject}}</h3>
+
+                        <p>Total Subjects</p>
+                    </div>
+                    <div class="icon">
+                        <i class="ion ion-pie-graph"></i>
+                    </div>
+
+                </div>
+            </div>
+            <!-- ./col -->
+        </div>
+        <!-- /.row -->
+
+
     </div><!-- /.container-fluid -->
 </section>
 {% endblock content %}
@@ -123,7 +128,7 @@
             datasets: [
               {
                 data:[{{total_attendance}}, {{total_leave}}],
-                backgroundColor : ['#00a65a', '#f39c12',],
+                backgroundColor : ['#1277f3', '#1f1f1f',],
               }
             ]
           }
@@ -149,7 +154,7 @@
       datasets: [
       {
         label               : 'Attendance Per Subject',
-        backgroundColor     : '#6c757d',
+        backgroundColor     : '#1f1f1f',
         borderColor         : 'rgba(60,141,188,0.8)',
         pointRadius          : false,
         pointColor          : '#3b8bba',
